@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'package:flutter/material.dart';
-
+import 'main2.dart';
 void main() {
   runApp(MaterialApp(
     title: 'Flutter Navigate to Another Activity Screen',
@@ -9,31 +7,30 @@ void main() {
   ));
 }
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreen createState() => new _HomeScreen();
+}
 
-  gotoSecondActivity(BuildContext context){
 
-    Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => SecondScreen()),
-    );//route to next screen
 
-  }
-
+  class _HomeScreen extends State<HomeScreen>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home Activity Screen'),
+        title: Text('Home Activity'),
       ),
       body: Center(
 
         child: RaisedButton(
-            child: Text('Navigate To Second Screen'),
+            child: Text('Navigate To Second Screen Please'),
             color: Colors.green,
             textColor: Colors.white,
             onPressed: () {
-              gotoSecondActivity(context);
+              Navigator.push(context,
+                  MaterialPageRoute(
+                      builder: (context) => SecondScreen()));
             }),
 
       ),
@@ -41,31 +38,8 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class SecondScreen extends StatelessWidget {
 
-  goBackToPreviousScreen(BuildContext context){
 
-    Navigator.pop(context);
-
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Second Activity Screen"),
-      ),
-      body: Center(
-        child: RaisedButton(
-          onPressed: () {goBackToPreviousScreen(context);},
-          color: Colors.lightBlue,
-          textColor: Colors.white,
-          child: Text('Go Back To Previous Screen'),
-        ),
-      ),
-    );
-  }
-}
 
 /*
 void main()
